@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${DOCKER_REGISTRY}/my-nodejs-app:${BUILD_NUMBER}
+    container_name: node-web
+    restart: always
+    ports:
+      - "8000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=27017
+
+  db:
+    image: mongo:latest
+    container_name: node-mongo-db
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
