@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    DOCKER_REGISTRY = 'krankit74' // change this if your Docker Hub username is different
+    DOCKER_REGISTRY = 'ankitkr074' // change this if your Docker Hub username is different
     IMAGE_NAME = 'my-nodejs-app'
   }
 
